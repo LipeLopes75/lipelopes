@@ -1,0 +1,38 @@
+name: Sincronizar portfolio iGaming
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Baixar a versao aprovada
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://lipe-lopes-igaming.aguiar-phillipe.chatgpt.site"
+          mkdir -p igaming/assets
+          curl -fsSL "$base/" -o igaming/index.html
+          curl -fsSL "$base/styles.css" -o igaming/styles.css
+          curl -fsSL "$base/script.js" -o igaming/script.js
+          for file in cta-premiacoes.webp favicon.svg geniusbet-equipe-plano.webp geniusbet-homepage.jpg hero-premiacoes-poster.webp hero-premiacoes-wide.mp4 hero-premiacoes.mp4 lipe-premiacoes.webp lipe-seubet-premio.webp mentor-ravel-premio-1-milhao.webp mentor-ravel-produto.webp momento-flamengo.webp nick-do-virtual-produto.webp seubet-100k.webp seubet-50k.webp seubet-evento.webp sigma-south-america.webp; do
+            curl -fsSL "$base/assets/$file" -o "igaming/assets/$file"
+          done
+
+      - name: Salvar o portfolio no repositorio
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add igaming
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Publicar portfolio de iGaming"
+          git push
