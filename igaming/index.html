@@ -27,9 +27,11 @@
     <section class="hero" id="topo" aria-labelledby="hero-title">
       <div class="hero-background" aria-hidden="true">
         <div class="hero-blur"></div>
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-premiacoes-poster.webp" disablepictureinpicture>
-          <source src="assets/hero-premiacoes.mp4" type="video/mp4" media="(max-width: 920px)">
+        <video class="hero-video-desktop" autoplay muted loop playsinline preload="metadata" poster="assets/hero-premiacoes-poster.webp" disablepictureinpicture>
           <source src="assets/hero-premiacoes-wide.mp4" type="video/mp4">
+        </video>
+        <video class="hero-video-mobile" autoplay muted loop playsinline preload="metadata" poster="assets/hero-premiacoes-poster.webp" disablepictureinpicture>
+          <source src="assets/hero-premiacoes.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-shade"></div>
