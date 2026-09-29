@@ -35,37 +35,6 @@
     });
   });
 
-  const practiceContent = {
-    trafego: {number:"01",title:"Tráfego pago",actions:["Planejo e configuro campanhas","Instalo pixels e conversões","Otimizo, escalo e analiso resultados","Direciono criativos e copies"],tools:[["Meta Ads","∞","#0467df"],["Google Ads","A","#4285f4"]]},
-    automacoes: {number:"02",title:"Automações",actions:["Captação e qualificação de leads","Atendimento automatizado no WhatsApp","Follow-up e recuperação de oportunidades","Distribuição de leads para vendedores"],tools:[["ManyChat","•••","#1f85ff"],["BotConversa","BC","#20b982"],["Make","M","#6d00cc"],["Zapier","✦","#ff4f00"],["n8n","···","#ea4b71"],["WhatsApp API","☎","#25d366"]]},
-    ia: {number:"03",title:"Inteligência artificial",actions:["Pesquisa e diagnóstico","Planejamento estratégico","Criação de textos e copies","Análise de dados","Criação de imagens e vídeos"],tools:[["ChatGPT","✣","#10a37f"],["Claude","AI","#d97757"],["Gemini","✦","#8e75b2"]]},
-    funis: {number:"04",title:"Funis e conversão",actions:["Posicionamento, oferta e copy","Páginas, captação e jornada no WhatsApp","Checkout e meios de pagamento","Testes de conversão e remarketing"],tools:[["WordPress","W","#21759b"],["Elementor","E","#92003b"],["Hotmart","HM","#f04e23"],["Kiwify","KW","#49c98f"],["Doppus","DP","#f3743c"]]},
-    dados: {number:"05",title:"Dados e rastreamento",actions:["Configuração de tags e eventos","UTMs e rastreamento de campanhas","Leitura de métricas de mídia","Análise de dashboards comerciais"],tools:[["Tag Manager","◇","#246fdb"],["Meta Ads","∞","#0467df"],["Google Ads","A","#4285f4"],["Dashboards CRM","CRM","#62ddc0"]]},
-    comercial: {number:"06",title:"Processo comercial",actions:["Qualificação, roteiro e funil no CRM","Follow-up e distribuição de oportunidades","Reuniões de fechamento","Treinamento, indicadores e metas"],tools:[["RD Station CRM","RD","#22c55e"],["Kommo","K","#6c63ff"]]}
-  };
-
-  const practiceTabs = [...doc.querySelectorAll("[data-practice-tab]")];
-  const practiceNumber = doc.querySelector("#practice-number");
-  const practiceTitle = doc.querySelector("#practice-panel-title");
-  const practiceActions = doc.querySelector("#practice-actions");
-  const practiceTools = doc.querySelector("#practice-tools");
-  const toolMarkup = ([name, mark, color]) => `<span class="lp-tool"><i style="--brand:${color}" aria-hidden="true">${mark}</i><b>${name}</b></span>`;
-
-  const selectPracticeTab = (key) => {
-    const selected = practiceContent[key];
-    if (!selected) return;
-    practiceTabs.forEach((tab) => {
-      const active = tab.dataset.practiceTab === key;
-      tab.classList.toggle("is-active", active);
-      tab.setAttribute("aria-selected", String(active));
-    });
-    practiceNumber.textContent = selected.number;
-    practiceTitle.textContent = selected.title;
-    practiceActions.innerHTML = selected.actions.map((item) => `<li>${item}</li>`).join("");
-    practiceTools.innerHTML = selected.tools.map(toolMarkup).join("");
-  };
-  practiceTabs.forEach((tab) => tab.addEventListener("click", () => selectPracticeTab(tab.dataset.practiceTab)));
-
   const track = doc.querySelector(".lp-testimonial-track");
   const testimonials = [...doc.querySelectorAll(".lp-testimonial")];
   const prev = doc.querySelector(".lp-carousel-prev");
