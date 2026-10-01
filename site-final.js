@@ -16,25 +16,6 @@
     doc.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
   }
 
-  const problemCards = [...doc.querySelectorAll(".lp-problem")];
-  problemCards.forEach((card) => {
-    const trigger = card.querySelector("button");
-    const content = card.querySelector(".lp-problem__content");
-    trigger.addEventListener("click", () => {
-      const wasOpen = card.classList.contains("is-open");
-      problemCards.forEach((item) => {
-        item.classList.remove("is-open");
-        item.querySelector("button").setAttribute("aria-expanded", "false");
-        item.querySelector(".lp-problem__content").hidden = true;
-      });
-      if (!wasOpen) {
-        card.classList.add("is-open");
-        trigger.setAttribute("aria-expanded", "true");
-        content.hidden = false;
-      }
-    });
-  });
-
   const track = doc.querySelector(".lp-testimonial-track");
   const testimonials = [...doc.querySelectorAll(".lp-testimonial")];
   const prev = doc.querySelector(".lp-carousel-prev");
